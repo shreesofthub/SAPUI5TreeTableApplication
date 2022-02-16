@@ -1,0 +1,53 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" 
+          controllerName="treetable.controller.table1"
+          xmlns="sap.m"
+          xmlns:table="sap.ui.table"
+          xmlns:u="sap.ui.unified"
+          xmlns:core="sap.ui.core">
+          <Page id="idTreeTable11P" title="Display Tree table using Local JSON Model-(sap.ui.table.TreeTabel in View)">
+                <table:TreeTable id="idTable1"
+                                 alternateRowColors="true"
+                                 selectionMode="MultiToggle"
+                                 showNoData="true"
+                                 rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}">
+                    <table:columns>
+                        <table:Column id="idColumn1" autoResizable="true">
+                            <table:label>
+                                <Label id="cHeader1" text="Categories"/>
+                            </table:label>
+                            <table:template>
+                                <Text id="cItem1" text="{name}" wrapping="false"/>
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="idColumn2" autoResizable="true">
+                            <table:label>
+                                <Label id="cHeader2" text="Price"/>
+                            </table:label>
+                            <table:template>
+                                <u:Currency id="idCurr" value="{amount}" currency="{currency}"></u:Currency>
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="idColumn3" autoResizable="true">
+                            <table:label>
+                                <Label id="cHeader3" text="Size"/>
+                            </table:label>
+                            <table:template>
+                                <Select id="idSelect" items="{path:'/sizes',templateShareable: true}" >
+                                    <core:Item id="idItem" key="{key}" text="{value}"></core:Item>
+                                </Select>
+                            </table:template>
+                        </table:Column>
+                    </table:columns>
+                    <table:extension>
+                        <OverflowToolbar id="idToolbar1">
+                            <Title id="idTitle1" text="Clothing"/>
+                            <ToolbarSpacer id="idToolbarSpacer"/>
+                            <Button id="idBtn1" text="Collapse All" press="onColAll"/>
+                            <Button id="idBtn2" text="Expand First level" press="onExpFL"/>
+                            <Button id="idBtn3" text="Expand Selected" press="onExpSel"/>
+                            <Button id="idBtn4" text="Collapse Selected" press="onColSel"/>
+                        </OverflowToolbar>
+                    </table:extension>
+                </table:TreeTable>
+          </Page>
+</mvc:View>          
